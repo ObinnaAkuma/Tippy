@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Tippy</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_us">We have made this application to ease you of the stress of your tip calculations. \n\nWith the understanding of how enjoying your meal or service gotten could be and you may be moved to give a tip, easily make the calculation and know the exact % you wish to tip.</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+    <string name="todo">TODO</string>
+    <string name="todo1">TODO</string>
+    <string name="base">Base</string>
+    <string name="bill_amount">Bill Amount</string>
+    <string name="tip">Tip</string>
+    <string name="total">Total</string>
+    <string name="made_with_by_vinx">Made with ❤️ by Vinx!</string>
+</resources>
