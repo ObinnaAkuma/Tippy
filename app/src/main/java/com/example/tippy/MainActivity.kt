@@ -9,25 +9,26 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SeekBar
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.tippy.databinding.ActivityMainBinding
 
 
 private const val INITIAL_TIP_PERCENT = 15
 class MainActivity : AppCompatActivity() {
 
-
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        sbTipPercentageBar.progress = INITIAL_TIP_PERCENT
-        tvTipPercentage.text = "$INITIAL_TIP_PERCENT"
+        binding.sbTipPercentageBar.progress = INITIAL_TIP_PERCENT
+        binding.tvTipPercentage.text = "$INITIAL_TIP_PERCENT"
 
 
-        sbTipPercentageBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        binding.sbTipPercentageBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 Log.d("onProgressChanged", "$progress")
-                tvTipPercentage.text = progress.toString()
+                binding.tvTipPercentage.text = progress.toString()
                 computeTipAndTotal()
             }
 
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        etBaseAmount.addTextChangedListener(object : TextWatcher{
+        binding.etBaseAmount.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -88,21 +89,21 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun computeTipAndTotal() {
-        if(etBaseAmount.text.isEmpty()) {
-            tvTip.text = ""
-            tvTotal.text = ""
+        if(binding.etBaseAmount.text.isEmpty()) {
+            binding.tvTip.text = ""
+            binding.tvTotal.text = ""
             return
         }
 
         //1. Get the value of the tip and total
-        val baseAmount = etBaseAmount.text.toString().toDouble()
-        val tipPercent = sbTipPercentageBar.progress
+        val baseAmount = binding.etBaseAmount.text.toString().toDouble()
+        val tipPercent = binding.sbTipPercentageBar.progress
         //2. Compute the tip and total
         val tipAmount = baseAmount * tipPercent / 100
         val totalAmount = baseAmount + tipAmount
 
         //3. Update the UI
-        tvTip.text = "%.2f".format(tipAmount)
-        tvTotal.text = "%.2f".format(totalAmount)
+        binding.tvTip.text = "%.2f".format(tipAmount)
+        binding.tvTotal.text = "%.2f".format(totalAmount)
     }
 }
